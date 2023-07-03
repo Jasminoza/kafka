@@ -1,0 +1,17 @@
+server:
+  port: 8081
+
+topic:
+  name: "t.scheduled"
+
+spring:
+  kafka:
+    consumer:
+      group-id: "default"
+    bootstrap-servers: "localhost:29092"
+
+  datasource:
+    url: jdbc:mysql://0.0.0.0:3307/RESTWithServletsV2
+    username: root
+    password: Java22!mysql
+    driver-class-name: com.mysql.cj.jdbc.Driver

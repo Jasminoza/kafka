@@ -1,0 +1,9 @@
+server:
+  port: 8080
+
+topic:
+  name: "t.food.order"
+
+spring:
+  kafka:
+    bootstrap-servers: "localhost:29092"

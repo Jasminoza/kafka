@@ -8,7 +8,7 @@ spring:
   kafka:
     consumer:
       group-id: "default"
-    bootstrap-servers: "localhost:29092"
+    bootstrap-servers: "localhost:9092"
 
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres

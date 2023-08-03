@@ -15,7 +15,7 @@ public class Scheduler {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    @Scheduled(fixedRate = 3000)
+    @Scheduled(fixedRate = 60_000)
     public void sendMessage() {
         count++;
 

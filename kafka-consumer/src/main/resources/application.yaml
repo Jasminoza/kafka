@@ -11,7 +11,11 @@ spring:
     bootstrap-servers: "localhost:29092"
 
   datasource:
-    url: jdbc:mysql://0.0.0.0:3307/RESTWithServletsV2
-    username: root
-    password: Java22!mysql
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: eco_webdealing_docs
+    password: eco_webdealing_docs_psw
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create

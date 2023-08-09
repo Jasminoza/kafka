@@ -4,7 +4,6 @@ services:
   zookeeper:
     image: zookeeper:3.7.0
     container_name: zookeeper
-    restart: "no"
     ports:
       - "2181:2181"
 
@@ -28,10 +27,33 @@ services:
   kafdrop:
     image: ghcr.io/arm64-compat/kafdrop:3.30.0-arm64
     container_name: kafdrop
-    restart: "no"
     ports:
       - "9000:9000"
     environment:
       KAFKA_BROKERCONNECT: "kafka:29092"
     depends_on:
       - kafka
+
+  ibmmq:
+    image: ibm-mqadvanced-server-dev:9.3.3.0-arm64
+    depends_on:
+      - kafdrop
+    ports:
+      - 1414:1414
+      - 9443:9443
+    environment:
+      LICENSE: accept
+      DEBUG: true
+      MQ_QMGR_NAME: QM1
+      ICC_SHIFT: 3
+      MQ_APP_PASSWORD: passw0rd
+      volume: qm1data:/mnt/mqm
+
+  postgres:
+    image: postgres:14-alpine
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: eco_webdealing_docs
+      POSTGRES_PASSWORD: eco_webdealing_docs_psw
+      POSTGRES_DATABASE: 'eco_webdealing_docs?currentSchema=onboarding'
